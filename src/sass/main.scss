@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+@import "base/base";
+@import "img";
+
+@font-face {
+    font-family: 'Monaco-self';
+    src: url('../assets/MONACO.TTF');
+}
+
+html, body {
+    font: 14px/1.5 Monaco-self,Monaco,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FAFAFA;
+    color: #333;
+}
+
+#logo {
+    margin-top: -60px;
+    width: 100%;
+    height: 150px;
+    background-image: url( ../img/base64/logo.png );
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#title {
+    margin-top: 20px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#badge {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    a {
+        margin: 0 5px;
+    }
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 600px;
+        height: 1px;
+        content: "";
+        background-color: #EAEAEA;
+    }
+}
+
+#sec-title {
+    width: 100%;
+    height: 30px;
+    link-height: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#github {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 90px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    color: rgba( 0, 0, 0, .25 );
+    transform: scale( .8, .8 );
+    transform-origin: center;
+}
