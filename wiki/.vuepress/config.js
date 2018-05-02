@@ -23,14 +23,5 @@ module.exports = {
             { text: '配置', link: './config' },
         ],
         repo: 'legoflow/legoflow',
-        sidebar: [
-            {
-                title: '指南',
-                collapsable: false,
-                children: [
-                    '/'
-                ]
-            },
-        ]
     }
 }
