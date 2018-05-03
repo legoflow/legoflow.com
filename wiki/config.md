@@ -52,7 +52,7 @@ ES.Next: true
 
 ### alias
 
-WebPack 别名配置，[参考文档](https://webpack.js.org/loaders/css-loader/#alias)，e.g.
+Webpack 别名配置，[参考文档](https://webpack.js.org/loaders/css-loader/#alias)，e.g.
 
 ```yaml
 alias:
@@ -62,7 +62,7 @@ alias:
 
 ### global
 
-WebPack 全局对象，[参考文档](https://webpack.js.org/guides/shimming/#shimming-globals)，e.g.
+Webpack 全局对象，[参考文档](https://webpack.js.org/guides/shimming/#shimming-globals)，e.g.
 
 ```yaml
 global:
@@ -73,7 +73,7 @@ global:
 
 ### externals
 
-WebPack externals，[参考文档](https://webpack.js.org/configuration/externals/#externals)，e.g.
+Webpack externals，[参考文档](https://webpack.js.org/configuration/externals/#externals)，e.g.
 
 ```yaml
 externals:
@@ -120,7 +120,7 @@ watch.reload:
 
 ### user.args
 
-用户参数，根据用户名注入 [WebPack define](https://webpack.js.org/plugins/define-plugin/#usage) 插件变量， e.g.
+用户参数，根据用户名注入 [Webpack define](https://webpack.js.org/plugins/define-plugin/#usage) 插件变量， e.g.
 
 ```yaml
 # * 全部用户在 JS 文件中变量 process.args.token4Common 编译为 abc
@@ -164,7 +164,7 @@ workflow.dev:
 
 ### html.resourcesDomain
 
-类型于 1.x 版本 assets，构建时候对 html 文件引入的资源加入主域，e.g.
+类型于 1.x 版本 `assets`，构建时候对 html 文件引入的资源加入主域，e.g.
 
 ```yaml
 # 例如：<script src="./js/main.js"></script>
@@ -172,9 +172,20 @@ workflow.dev:
 html.resourcesDomain: https://legox.org
 ```
 
+### css.resourcesDomain
+
+
+类型于 1.x 版本 `assets.css`，构建时候对 css 文件引入的资源加入主域，e.g.
+
+```yaml
+# 例如：background-image: ( ../img/icon.png )
+# 输出：background-image: ( https://legox.org/img/icon.png )
+css.resourcesDomain: https://legox.org
+```
+
 ### cache
 
-对资源生成 时间戳 ( timestamp ) / 版本号 ( version ) / 无 ( '' )，e.g.
+对资源生成 时间戳 ( `timestamp` ) / 版本号 ( `version` ) / 无 ( `''` )，e.g.
 
 ```yaml
 # 时间戳：<script src="./js/main.js?t=1523518772795"></script>

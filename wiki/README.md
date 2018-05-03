@@ -6,7 +6,7 @@ sidebar: auto
 
 ## 介绍
 
-LegoFlow 2 是一款基于 **WebPack 4.x**、**Gulp 4.x**、**Babel 7** 作为核心的 Web 前端工作流客户端应用。
+LegoFlow 2 是一款基于 **Webpack 4.x**、**Gulp 4.x**、**Babel 7** 作为核心的 Web 前端工作流客户端应用。
 
 以 [Electron](https://electronjs.org/) 为基础构建框架，兼容主流的 macOS 以及 Windows 64 系统。
 
@@ -24,15 +24,15 @@ LegoFlow 2 是一款基于 **WebPack 4.x**、**Gulp 4.x**、**Babel 7** 作为�
 
 ### 工作流组成
 
-工作流部分主要由 WebPack + Gulp 的形式构成。
+工作流部分主要由 Webpack + Gulp 的形式构成。
 
-WebPack 仅负责对 JavaScript 部分资源进行处理，其中主要包括 ES.Next 语法编译，模块处理等等。
+Webpack 仅负责对 JavaScript 部分资源进行处理，其中主要包括 ES.Next 语法编译，模块处理等等。
 
 而 Gulp 则负责剩余其他部门资源的处理，例如 HTML、Sass、EJS、图片处理 等等。
 
 同时使用两个构建工具是为了让各自的优点得到最大的发挥。
 
-WebPack 专门处理 JavaScript 模块化构建，而 Gulp 补充 WebPack 一些功能较为薄弱的环节，例如 雪碧图合并。
+Webpack 专门处理 JavaScript 模块化构建，而 Gulp 补充 Webpack 一些功能较为薄弱的环节，例如 雪碧图合并。
 
 对于前端工作流更加详细的探索，可以前往 [这里](https://zhuanlan.zhihu.com/p/27355765) 了解。
 
@@ -167,7 +167,7 @@ Windows 64 系统点击菜单 `应用>全局设置` 进入全局设置界面。
 
 ### 入口文件
 
-JavaScript 模块由 WebPack 管理，工作流会自动获取 `项目目录/src/js/` 路径下 第一层 JS 文件，但不包括子文件夹下 JS 文件 或 带下划线前缀的 JS 文件，作为 [WebPack entry](https://webpack.js.org/concepts/#entry) 配置，进行依赖链的热刷新。
+JavaScript 模块由 Webpack 管理，工作流会自动获取 `项目目录/src/js/` 路径下 第一层 JS 文件，但不包括子文件夹下 JS 文件 或 带下划线前缀的 JS 文件，作为 [Webpack entry](https://webpack.js.org/concepts/#entry) 配置，进行依赖链的热刷新。
 
 所以值得注意的是：
 
