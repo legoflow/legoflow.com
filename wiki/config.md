@@ -158,8 +158,16 @@ proxy:
 以下参数配置在 workflow.build 内，e.g.
 
 ```yaml
-workflow.dev:
+workflow.build:
     env: preview
+```
+
+### publicPath
+
+Webpack output.publicPath 配置，[参考文档](https://webpack.js.org/configuration/output/#output-publicpath)，e.g.
+
+```yaml
+publicPath: https://legoflow.com
 ```
 
 ### html.resourcesDomain
@@ -241,3 +249,39 @@ output.webpackStats: true
 ```
 
 分析网站：[webpack analyse](http://webpack.github.io/analyse/)、[webpack chart](http://alexkuz.github.io/webpack-chart/)
+
+
+## Schema
+
+```js
+{
+    name: String,
+    version: String,
+    type: String,
+    REM: Boolean,
+    'ES.Next': Boolean,
+    alias: Object,
+    global: Object,
+    externals: Object,
+    env: Object,
+    'workflow.dev': {
+        env: String,
+        'watch.reload': Array,
+        'user.args': Object,
+        proxy: Object,
+    },
+    'workflow.build': {
+        publicPath: String,
+        'html.resourcesDomain': String,
+        'css.resourcesDomain': String,
+        cache: String,
+        'user.args': String,
+        env: String,
+        shell: String,
+        onlyRunShell: Boolean,
+        'output.webpackStats': Boolean,
+    },
+}
+```
+
+[参考](https://github.com/legoflow/engine/blob/master/params_config_schema.js)
