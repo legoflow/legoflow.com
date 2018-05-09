@@ -80,6 +80,15 @@ externals:
     vue: Vue
 ```
 
+### includeModules
+
+Webpack modules，[参考文档](https://webpack.js.org/concepts/module-resolution/#src/components/Sidebar/Sidebar.jsx)，e.g.
+
+```yaml
+includeModules:
+    - ./node_modules
+```
+
 ### env
 
 配置各种环境不一样的参数，e.g.
@@ -264,6 +273,7 @@ output.webpackStats: true
     global: Object,
     externals: Object,
     env: Object,
+    includeModules: Array,
     'workflow.dev': {
         env: String,
         'watch.reload': Array,
