@@ -230,7 +230,7 @@ let thtml = require('./t.tpl')( {
 console.log( thtml ); // <div id="test">test</div>
 ```
 
-使用 filter
+使用 helper
 
 ```html
 // t.tpl
@@ -239,10 +239,10 @@ console.log( thtml ); // <div id="test">test</div>
 
 ```js
 // t.js
-let runtime = require('art-template/lib/runtime');
+let helper = require('@tpl/helper');
 
-runtime.test = ( val ) => {
-    return `test filter: ${ val }`;
+helper.test = ( val ) => {
+    return `test helper: ${ val }`;
 }
 
 let thtml = require('./t.tpl')( {
@@ -431,6 +431,55 @@ console.log(thtml); // <div id="test">test helper: t</div>
 
 构建阶段，工作流会把 `src/assets` 静态资源文件夹搬迁到 构建后目录`dist`里面。
 
+## 使用 node_modules
+
+一些模块安装在项目目录 node_modules，我们可以通过 2 种方式去引入这些模块。
+
+### 别名 alias
+
+通过别名 `@local`，这个别名默认已被注入，可直接使用。
+
+例如，项目 node_modules 下安装了 vue，可通过以下方式进行引入使用：
+
+```js
+import Vue from '@local/vue';
+```
+
+### 配置 includeModules
+
+通过配置 [includeModules](https://legoflow.com/wiki/config.html#includemodules) 可让客户端除了在内置的 node_modules 中寻找模块之外，还能在指定位置寻找。
+
+例如，项目 node_modules 下安装了 vue，配置 legoflow.yml
+
+```yaml
+includeModules:
+    - ./node_modules
+```
+
+可直接引入使用
+
+```js
+import Vue from 'vue';
+```
+
+**注意** 这个方法同时存在的弊端，客户端会先对内置的 node_modules 进行查找，如果找不到的话，才再去寻找配置的路径。一旦找到了便使用的是客户端内置的 node_modules 模块。
+
+例如客户端内置了 lodash 模块，进行了上述配置后，本地项目也存在 lodash，然后 JS 中直接 import lodash，指向的是客户端内置的 lodash，而不是项目本地的 lodash，这时应该使用别名的方式精确进行指向。
+
+那为什么需要先寻找客户端内置的 node_modules，这个跟客户端寻址策略有很大关系。
+
+所有项目的工作流模块都依赖于客户端内置 node_modules，并以其为基础，因而不需要每个项目下都存在 node_modules。
+
+例如本地项目安装了 babel-loader 模块，如果客户端选进行对本地进行寻找的话，可能会造成 babel-loader 版本不适配，从而导致整个工作流出错无法启动，这样的问题是灾难性的。
+
+所以先对内置 node_modules 模块的寻址特别重要。
+
+如果担心本地模块与内置模块冲突的话，可以随时查看当前客户端内置的模块。
+
+macOS: `APP/显示包内容/Contents/Resources/app/node_modules`
+
+Windows: `APP/resources/app/node_modules`
+
 ## 调试小工具
 
 开发工作流启动的 web 服务，URL 带上 dev 参数，则自动注入调试工具。功能主要包括:
@@ -548,6 +597,6 @@ module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
 
 ## 联系反馈
 
-遇到问题或者有更棒的想法，欢迎大家提出 issues 或 PR.
+遇到问题或者有更棒的想法，欢迎大家提出 issues 或 PRs.
 
 交流 Q 群 457756220
