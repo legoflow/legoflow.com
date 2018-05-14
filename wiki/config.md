@@ -162,6 +162,22 @@ proxy:
         changeOrigin: true
 ```
 
+### shell
+
+需要执行的 shell 脚本文件，e.g.
+
+```yaml
+shell: ./shell/dev.js
+```
+
+### onlyRunShell
+
+否仅仅执行 Shell 脚本文件，e.g.
+
+```yaml
+onlyRunShell: true
+```
+
 ## 构建工作流参数
 
 以下参数配置在 workflow.build 内，e.g.
@@ -238,7 +254,7 @@ env: preview
 需要执行的 shell 脚本文件，e.g.
 
 ```yaml
-shell: ./shell.js
+shell: ./shell/build.js
 ```
 
 ### onlyRunShell
@@ -279,6 +295,8 @@ output.webpackStats: true
         'watch.reload': Array,
         'user.args': Object,
         proxy: Object,
+        shell: String,
+        onlyRunShell: Boolean,
     },
     'workflow.build': {
         publicPath: String,
