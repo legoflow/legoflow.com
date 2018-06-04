@@ -89,6 +89,14 @@ includeModules:
     - ./node_modules
 ```
 
+### ESLint
+
+是否启动 ESLint，启动后若项目下没有 ESLint 配置文件的话，默认会以 [Standard](https://standardjs.com/rules-zhcn.html) 作为规范。e.g.
+
+```yaml
+ESLint: true
+```
+
 ### env
 
 配置各种环境不一样的参数，e.g.
@@ -116,6 +124,14 @@ env:
 ```yaml
 workflow.dev:
     env: dev-test
+```
+
+### hot.reload
+
+代码热更新，e.g.
+
+```yaml
+hot.reload: true
 ```
 
 ### watch.reload
@@ -279,12 +295,15 @@ output.webpackStats: true
 ## Schema
 
 ```js
-{
+'use strict';
+
+const schema = {
     name: String,
     version: String,
     type: String,
     REM: Boolean,
     'ES.Next': Boolean,
+    ESLint: Boolean,
     alias: Object,
     global: Object,
     externals: Object,
@@ -292,6 +311,7 @@ output.webpackStats: true
     includeModules: Array,
     'workflow.dev': {
         env: String,
+        'hot.reload': Boolean,
         'watch.reload': Array,
         'user.args': Object,
         proxy: Object,

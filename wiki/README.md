@@ -189,27 +189,11 @@ if ( process.env === 'dev' ) {
 else if ( process.env === 'build' ) {
     console.info( '这个是生产环境' );
 }
-```
 
-### 引入 scss 文件
-
-支持引入 sass 文件，并通过 autoprefixer 进行自动补全，返回样式字符串。如:
-
-```css
-// t.scss
-@import "./t1.scss";
-@import url(./_t2.scss);
-
-#test {
-    transition: all .2s ease;
-}
-```
-
-```js
-// t.js
-import css from './t.scss';
-
-console.log( css ); // #test{transition: all .2s ease;-webkit-transition: all .2s ease}
+// 如果你使用了 env 具体指向某个环境
+// 例如 workflow.dev { env: 'dev-test' }
+// 可通过 process.environment 访问到具体注入的环境变量
+console.log( process.environment );
 ```
 
 ### 引入 tpl 文件
