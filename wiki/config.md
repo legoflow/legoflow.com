@@ -117,6 +117,54 @@ env:
             html.resourcesDomain: https://production.com
 ```
 
+### entry
+
+一般情况下，webapck entry 是通过 [内置策略](https://legoflow.com/wiki/#%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6) 自动获取的，但你也可以通过该属性进行指定。e.g.
+
+```yaml
+entry:
+  - ./src/main.ts
+  - ./src/test.js
+
+# 或者
+
+entry:
+  main: ./src/main.ts
+  test: ./src/test.js
+```
+
+### mode
+
+设置 Engine 模式。e.g.
+
+```yaml
+mode: webpack
+```
+
+### webpack
+
+当设置 Engine 模式 为 `webpack` 的时候，该属性生效，主要用来设置一些 Webpack 插件的配置。e.g.
+
+```yaml
+webpack:
+  # dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件
+  dll:
+    vendor1:
+      - vue
+      - vue-router
+      - vuex
+  # 设置 html-webpack-plugin 插件配置
+  html:
+    - template: ./src/html/index.html
+      filename: index.html
+      excludeChunks:
+        - test
+    - template: ./src/html/test.html
+      filename: test.html
+      excludeChunks:
+        - main
+```
+
 ## 开发工作流参数
 
 以下参数配置在 workflow.dev 内，e.g.
@@ -309,6 +357,8 @@ const schema = {
     externals: Object,
     env: Object,
     includeModules: Array,
+    mode: String,
+    webpack: Object,
     'workflow.dev': {
         env: String,
         'hot.reload': Boolean,
@@ -322,6 +372,7 @@ const schema = {
         publicPath: String,
         'html.resourcesDomain': String,
         'css.resourcesDomain': String,
+        'bundle.limitResourcesSize': Number,
         cache: String,
         'user.args': String,
         env: String,

@@ -579,6 +579,80 @@ module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
 
 通过该策略，能够通过 Shell 脚本功能去执行一些外部 node 环境的脚本，从而完成构建后的自动化操作。
 
+### 生命周期
+
+> APP 版本 2.0.0-beta.6 以上，CLI 版本 2.0.0-beta.16 以上
+
+现在定义 Shell 模块后，还支持工作流的生命周期 init -> before -> after 不同阶段的需求。
+
+* init 阶段，工作流参数刚刚进入 engine，还未进行参数消化
+* before 阶段，engine 已消化了参数，准备启动工作流
+* after 阶段，engine 已完成工作流，准备回调
+
+提供这三个生命周期的钩子，可丰富每个项目不一样的 Shell 模块操作。
+
+举例，在 A 项目中存在较多的 env 环境配置，而每次构建的注入的 env 不一样，虽然可通过配置设置构建的 env，但每次修改配置不是一件聪明的事情。
+
+这时，我们就可以通过 init 的生命周期，进行 “提问” 希望让开发者在命令行中自行选择需要构建的环境。
+
+```js
+// ./shell/build.js
+
+'use strict';
+
+const path = require('path');
+
+exports.init = ( { config, message, pull } ) => {
+  return new Promise( async ( resolve, reject ) => {
+    if ( config.from === 'cli' ) {
+      const prompt = pull( 'inquirer' ).prompt;
+
+      const questions = [
+        {
+          type: 'list',
+          name: 'whichEnv',
+          message: '请选择构建环境',
+          choices: Object.keys( config.env ),
+          default: 1,
+        },
+      ];
+
+      const { whichEnv } = await prompt( questions );
+
+      config[ 'workflow.build' ].env = whichEnv;
+    }
+
+    resolve( );
+  } );
+}
+```
+
+```yaml
+# legoflow.yml
+workflow.build:
+  shell: ./shell/build.js
+```
+
+## Webpack Mode
+
+> APP 版本 2.0.0-beta.6 以上，CLI 版本 2.0.0-beta.16 以上
+
+如果你已经大致阅读过上述内容，应该比较清晰了解到 LegoFlow 工作流主要是有 Gulp & Webpack 组合的，因为他们能相互补充各自的弱点。
+
+但有的时候，我们的项目并不需要 Gulp 所带来的优点，例如：雪碧图等。这样的情况经常会发生在移动端单页面应用的项目，这时我们就可以 “抛弃” Gulp。
+
+所以，这时我们有了 Webpack Mode 的想法。
+
+顾名思义，它其实是 [LegoFlow Engine](https://github.com/legoflow/engine) 的一种模式，它会仅仅对项目使用 Webpack 进行开发构建。
+
+默认脚手架 **Vue.ts** 就是一个例子。
+
+## 持续构建
+
+通过 [LegoFlow-CLI](https://github.com/legoflow/legoflow-cli) 可以对项目在 Gitlab 上进行 CI 持续构建。
+
+另外我们提供了相关的 [Docker Image](https://github.com/legoflow/legoflow-ci-image)
+
 ## 联系反馈
 
 遇到问题或者有更棒的想法，欢迎大家提出 issues 或 PRs.
