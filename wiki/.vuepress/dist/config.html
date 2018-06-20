@@ -7,7 +7,7 @@
     <meta name="description" content="legoflow 2">
     <link rel="icon" href="/wiki/logo.png">
     
-    <link rel="preload" href="/wiki/assets/css/2.styles.e4567964.css" as="style"><link rel="preload" href="/wiki/assets/js/app.587da5ae.js" as="script"><link rel="preload" href="/wiki/assets/js/0.db809825.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.380d9296.js">
+    <link rel="preload" href="/wiki/assets/css/2.styles.e4567964.css" as="style"><link rel="preload" href="/wiki/assets/js/app.9c3cd289.js" as="script"><link rel="preload" href="/wiki/assets/js/0.ab8c3322.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.380d9296.js">
     <link rel="stylesheet" href="/wiki/assets/css/2.styles.e4567964.css">
   </head>
   <body>
@@ -33,7 +33,19 @@
     <span class="token key atrule">vue</span><span class="token punctuation">:</span> Vue
 </code></pre><h3 id="includemodules"><a href="#includemodules" aria-hidden="true" class="header-anchor">#</a> includeModules</h3><p>Webpack modules，<a href="https://webpack.js.org/concepts/module-resolution/#src/components/Sidebar/Sidebar.jsx" target="_blank" rel="noopener noreferrer">参考文档</a>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">includeModules</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> ./node_modules
-</code></pre><h3 id="eslint"><a href="#eslint" aria-hidden="true" class="header-anchor">#</a> ESLint</h3><p>是否启动 ESLint，启动后若项目下没有 ESLint 配置文件的话，默认会以 <a href="https://standardjs.com/rules-zhcn.html" target="_blank" rel="noopener noreferrer">Standard</a> 作为规范。e.g.</p><pre class="language-yaml"><code><span class="token key atrule">ESLint</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre><h3 id="eslint"><a href="#eslint" aria-hidden="true" class="header-anchor">#</a> ESLint</h3><p>是否启动 ESLint，启动后若项目下没有 <a href="http://eslint.cn/docs/user-guide/configuring#configuration-file-formats" target="_blank" rel="noopener noreferrer">ESLint 配置文件</a> 的话，JS 部分默认会以 <a href="https://standardjs.com/rules-zhcn.html" target="_blank" rel="noopener noreferrer">Standard</a> 作为规范，vue 文件部分会以  <a href="https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention" target="_blank" rel="noopener noreferrer">plugin:vue/essential</a>。e.g.</p><pre class="language-yaml"><code><span class="token key atrule">ESLint</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre><p>默认配置：</p><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">&quot;parserOptions&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;parser&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;babel-eslint&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;extends&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;standard&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;plugin:vue/essential&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;plugins&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;vue&quot;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
 </code></pre><h3 id="env"><a href="#env" aria-hidden="true" class="header-anchor">#</a> env</h3><p>配置各种环境不一样的参数，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">env</span><span class="token punctuation">:</span>
     <span class="token key atrule">dev-test</span><span class="token punctuation">:</span>
         <span class="token key atrule">alias</span><span class="token punctuation">:</span>
@@ -159,6 +171,6 @@
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre><p><a href="https://github.com/legoflow/engine/blob/master/params_config_schema.js" target="_blank" rel="noopener noreferrer">参考</a></p></div><!----><!----></div></div></div>
-    <script src="/wiki/assets/js/0.db809825.js" defer></script><script src="/wiki/assets/js/app.587da5ae.js" defer></script>
+    <script src="/wiki/assets/js/0.ab8c3322.js" defer></script><script src="/wiki/assets/js/app.9c3cd289.js" defer></script>
   </body>
 </html>

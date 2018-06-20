@@ -91,10 +91,27 @@ includeModules:
 
 ### ESLint
 
-是否启动 ESLint，启动后若项目下没有 ESLint 配置文件的话，默认会以 [Standard](https://standardjs.com/rules-zhcn.html) 作为规范。e.g.
+是否启动 ESLint，启动后若项目下没有 [ESLint 配置文件](http://eslint.cn/docs/user-guide/configuring#configuration-file-formats) 的话，JS 部分默认会以 [Standard](https://standardjs.com/rules-zhcn.html) 作为规范，vue 文件部分会以  [plugin:vue/essential](https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention)。e.g.
 
 ```yaml
 ESLint: true
+```
+
+默认配置：
+
+```js
+module.exports = {
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "extends": [
+    "standard",
+    "plugin:vue/essential"
+  ],
+  "plugins": [
+    "vue"
+  ]
+}
 ```
 
 ### env
