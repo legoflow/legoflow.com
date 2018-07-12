@@ -164,6 +164,12 @@ mode: webpack
 
 ```yaml
 webpack:
+  # 构建工作流，处理图片资源时，会进行图片压缩处理质量，默认为 90
+  imageQuality: 70
+  # 构建工作流，同时生成 Source Map 文件，默认为 false
+  build.sourceMap: true
+  # 禁止 异步 vue 文件内的 Style 单独打包出样式文件，默认为 true
+  VueChunkStyle: false
   # dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件
   dll:
     vendor1:
@@ -356,6 +362,13 @@ output.webpackStats: true
 
 分析网站：[webpack analyse](http://webpack.github.io/analyse/)、[webpack chart](http://alexkuz.github.io/webpack-chart/)
 
+### noUglifyJs
+
+构建出来的 JS 文件，是否需要混淆，e.g.
+
+```yaml
+noUglifyJs: true
+```
 
 ## Schema
 
@@ -396,6 +409,7 @@ const schema = {
         shell: String,
         onlyRunShell: Boolean,
         'output.webpackStats': Boolean,
+        noUglifyJs: Boolean
     },
 }
 ```
