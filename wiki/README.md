@@ -483,6 +483,8 @@ Windows: `APP/resources/app/node_modules`
 
 除了可以新建项目类型脚手架之外，还支持新建自定义项目类型。
 
+### 自定义本地项目类型
+
 首先，在 PC 本地建立一个文件夹，获取其绝对路径，在客户端全局配置中，设置到 `Project`，并保存。
 
 在新建的文件夹里，可以放置自定义项目，[这里](https://github.com/legoflow/project/tree/master/__test__/P1) 有一个示范项目，下载完成后，放置到新建的文件夹中即可。
@@ -493,6 +495,36 @@ Windows: `APP/resources/app/node_modules`
 
 一个标准的自定义项目类型可参考上述项目模板。
 
+### 自定义 NPM 仓库模板类型
+
+```shell
+# >= legoflow-cli v2.0.0-beta.27
+lf set loadNPMLegoFlowTemplate true
+```
+
+设置参数开启拉取网络 NPM 仓库上带前缀 **`legoflow-template-`** 的 NPM 模块 作为项目类型之一，因此这个 NPM 模块可以由你自己来决定以及发布。
+
+新建项目时，即可看到相应的 NPM 模板。例如：[legoflow-template-test](https://github.com/legoflow/legoflow-template-test)
+
+文件夹 **template** 放置脚手架模板文件，一些隐藏文件请使用 **~~** 作为标识。
+
+而模板文件夹内的 `legoflow.yml`、`package.json`、`README.md` 文件，会对文件内容进行变量的注入，例如：
+
+```json
+{
+  "name": "[name]",
+  "version": "[version]",
+  "author": "[author]"
+}
+```
+
+可注入的参数有：
+
+* `[name]`: 新建项目时填入的项目名称
+* `[version]`: 新建项目时填入的项目版本号
+* `[author]`: 新建项目时的用户
+* `[c_version]`: 新建项目时 lf 的版本号
+* `[type]`: 项目类型
 
 ## Shell 脚本机制
 
