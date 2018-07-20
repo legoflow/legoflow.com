@@ -170,6 +170,11 @@ webpack:
   build.sourceMap: true
   # 禁止 异步 vue 文件内的 Style 单独打包出样式文件，默认为 true
   VueChunkStyle: false
+  # 默认 Webpack loader 对文件的处理都 exclude 排除 node_modules 路径下的模块
+  # 而通过该属性可以指定一些模块加入 loader 的处理，例如：ESNext 语法编译等等
+  include:
+    esnext:
+      - ./node_modules/sdk
   # dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件
   dll:
     vendor1:

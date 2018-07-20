@@ -22,6 +22,7 @@ module.exports = {
             { text: '指南', link: 'https://legoflow.com/wiki' },
             { text: '配置', link: './config' },
             { text: 'CLI', link: './cli' },
+            { text: 'Awesomes', link: 'https://github.com/legoflow/awesomes' },
         ],
         repo: 'legoflow/legoflow',
     }
