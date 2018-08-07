@@ -415,6 +415,24 @@ console.log(thtml); // <div id="test">test helper: t</div>
 
 构建阶段，工作流会把 `src/assets` 静态资源文件夹搬迁到 构建后目录`dist`里面。
 
+**注意：** Webpack mode 下即便存在静态资源文件夹也并不会进行迁移。
+
+因为该模式下是以 Webpack 进行依赖链进行打包出资源，并不会调用 Gulp 做特殊处理，若一些非依赖链的资源，希望在构建后进行迁移，可以尝试使用 Shell 模块进行复制。例如：
+
+```js
+const path = require('path')
+
+module.exports = function ({config, pull}) {
+  return new Promise((resolve, reject) => {
+    const fs = pull('fs-extra')
+
+    fs.copySync(path.resolve(__dirname, '../src/assets'), path.resolve(__dirname, '../dist/assets'))
+
+    resolve()
+  })
+}
+```
+
 ## 使用 node_modules
 
 一些模块安装在项目目录 node_modules，我们可以通过 2 种方式去引入这些模块。
