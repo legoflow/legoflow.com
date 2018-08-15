@@ -143,13 +143,15 @@ Windows 64 系统点击菜单 `应用>全局设置` 进入全局设置界面。
 
 ### Vue.js
 
-由 [Vue.js](https://cn.vuejs.org/index.html) 框架全家桶（[vue-router](https://router.vuejs.org/zh/) + [vuex](https://vuex.vuejs.org/zh/) + [axios](https://github.com/axios/axios)）搭建组合。
+由 [Vue.js](https://cn.vuejs.org/index.html) 框架全家桶，[vue-router](https://router.vuejs.org/zh/) + [vuex](https://vuex.vuejs.org/zh/) + [axios](https://github.com/axios/axios) 组合搭建。
 
-以 [Webpack Mode](https://legoflow.com/wiki/#webpack-mode) 单一构建模块工具，另外其依赖模块方式是通过 NPM 包管理器安装，因而新建项目后，请通过安装依赖，若 PC 环境缺少 NPM，可通过客户端内置 NPM 模块进行安装。
+以 **[Webpack Mode](https://legoflow.com/wiki/#webpack-mode)** 单一构建模块工具，另外其依赖模块方式是通过 NPM 包管理器安装，因而新建项目后，请先安装依赖后运行。
+
+若 PC 环境缺少 NPM，可通过 **客户端内置 NPM 模块** 进行安装。
 
 ### Vue.ts
 
-由 Vue.js 项目类型进化而来，主要脚本编程语言使用 TypeScript。
+由 Vue.js 项目类型进化而来，唯一区别在于脚本编程语言使用 [TypeScript](https://www.tslang.cn/)。
 
 ### PC
 
@@ -157,7 +159,7 @@ PC 端常用脚手架，以 jQuery 作为核心依赖库。
 
 ### Mobile
 
-移动端常用脚手架，以 Zepto 作为核心依赖库。
+移动端常用脚手架，以 Zepto 作为核心依赖库，同时加入成熟的 REM 适配方案。
 
 ## HTML 模块
 
@@ -206,7 +208,6 @@ JavaScript 模块由 Webpack 管理，工作流会自动获取 `项目目录/src
 if ( process.env === 'dev' ) {
     console.info('这个是开发环境');
 }
-
 // 生产环境 判断
 else if ( process.env === 'build' ) {
     console.info( '这个是生产环境' );
@@ -331,7 +332,7 @@ console.log(thtml); // <div id="test">test helper: t</div>
 }
 ```
 
-**注意**，雪碧图文件夹的图片信息，其中 ```background-size: contain;``` 样式，只有在 开发工作流 上才会产生。
+**注意**，雪碧图文件夹的图片信息，其中 ```background-size: contain;``` 样式，只有在 **开发工作流** 上才会产生。
 
 本来 片段名上带有路径还有后缀是为了保持资源引用的唯一性，但对于开发者需要引用该片段名的时候，就显得很臃肿，因此对 片段名 进行优化，如：
 
@@ -364,7 +365,9 @@ console.log(thtml); // <div id="test">test helper: t</div>
 
 ### base64
 
-项目目录 `/src/img/base64` 下放置的图片，<100k，在构建工作流中，会自动转换成 base64 格式内置替换到对应样式中
+项目目录 `/src/img/base64` 下放置的图片，<100k，在构建工作流中，会自动转换成 base64 格式内置替换到对应样式中。
+
+但若在 HTML 上引入这路径下的图片文件，并不会进行转换。
 
 ### 雪碧图
 
@@ -390,7 +393,7 @@ console.log(thtml); // <div id="test">test helper: t</div>
 /dist/img/page-2.png
 ```
 
-支持合成 2 倍 3 倍雪碧图。
+支持合成 2 倍 / 3 倍雪碧图。
 
 **注意**，若配置了 `REM: true`, 生成的样式长度单位为 rem，其中包括的样式属性为
 
@@ -431,6 +434,8 @@ console.log(thtml); // <div id="test">test helper: t</div>
 <h1>生产环境</h1>
 ```
 
+注意：改动该文件夹任何的 EJS 文件，都会全部重新生成。主要的原因是 改动的文件存在可能性是另外一个文件的片段。
+
 ## 静态资源文件夹
 
 一些无需参与工作流的静态资源文件（例如: mp3 / mp4 / 第三方静态组件等）可放置在此文件夹下。
@@ -443,13 +448,11 @@ console.log(thtml); // <div id="test">test helper: t</div>
 
 ```js
 const path = require('path')
+const fs = require('fs-extra')
 
 module.exports = function ({config, pull}) {
   return new Promise((resolve, reject) => {
-    const fs = pull('fs-extra')
-
     fs.copySync(path.resolve(__dirname, '../src/assets'), path.resolve(__dirname, '../dist/assets'))
-
     resolve()
   })
 }
@@ -477,13 +480,13 @@ import Vue from '@local/vue';
 
 ```yaml
 includeModules:
-    - ./node_modules
+  - ./node_modules
 ```
 
 可直接引入使用
 
 ```js
-import Vue from 'vue';
+import Vue from 'vue'
 ```
 
 **注意** 这个方法同时存在的弊端，客户端会先对内置的 node_modules 进行查找，如果找不到的话，才再去寻找配置的路径。一旦找到了便使用的是客户端内置的 node_modules 模块。
@@ -513,7 +516,7 @@ Windows: `APP/resources/app/node_modules`
 * LOG：查看 log 打印日志
 
 <div align="center">
-    <img src="~image/7.png" width="700px">
+  <img src="~image/7.png" width="700px">
 </div>
 
 开发工作流启动的 web 服务，URL 带上 stats 参数，则自动注入 stats.js 工具，[了解功能](https://github.com/mrdoob/stats.js)。
