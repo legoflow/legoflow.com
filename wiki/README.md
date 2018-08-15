@@ -137,6 +137,28 @@ Windows 64 系统点击菜单 `应用>全局设置` 进入全局设置界面。
 * Project：自定义项目类型，[了解详细](./#自定义项目类型)
 * NodeBin：Shell 模块的扩展功能，[了解详细](./#nodebin)
 
+## 项目类型
+
+默认提供四种项目类型脚手架，包括：
+
+### Vue.js
+
+由 [Vue.js](https://cn.vuejs.org/index.html) 框架全家桶（[vue-router](https://router.vuejs.org/zh/) + [vuex](https://vuex.vuejs.org/zh/) + [axios](https://github.com/axios/axios)）搭建组合。
+
+以 [Webpack Mode](https://legoflow.com/wiki/#webpack-mode) 单一构建模块工具，另外其依赖模块方式是通过 NPM 包管理器安装，因而新建项目后，请通过安装依赖，若 PC 环境缺少 NPM，可通过客户端内置 NPM 模块进行安装。
+
+### Vue.ts
+
+由 Vue.js 项目类型进化而来，主要脚本编程语言使用 TypeScript。
+
+### PC
+
+PC 端常用脚手架，以 jQuery 作为核心依赖库。
+
+### Mobile
+
+移动端常用脚手架，以 Zepto 作为核心依赖库。
+
 ## HTML 模块
 
 ### 内联样式脚本
@@ -647,16 +669,14 @@ module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
 
 ```js
 // ./shell/build.js
-
 'use strict';
 
 const path = require('path');
+const prompt = require( 'inquirer' ).prompt;
 
 exports.init = ( { config, message, pull } ) => {
   return new Promise( async ( resolve, reject ) => {
     if ( config.from === 'cli' ) {
-      const prompt = pull( 'inquirer' ).prompt;
-
       const questions = [
         {
           type: 'list',
@@ -695,7 +715,7 @@ workflow.build:
 
 顾名思义，它其实是 [LegoFlow Engine](https://github.com/legoflow/engine) 的一种模式，它会仅仅对项目使用 Webpack 进行开发构建。
 
-默认脚手架 **Vue.ts** 就是一个例子。
+默认脚手架 **Vue.js** & **Vue.ts** 就是最好的示范例子。
 
 ## 持续构建
 
