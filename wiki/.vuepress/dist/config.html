@@ -7,7 +7,7 @@
     <meta name="description" content="legoflow 2">
     <link rel="icon" href="/wiki/logo.png">
     
-    <link rel="preload" href="/wiki/assets/css/3.styles.e0d9c61a.css" as="style"><link rel="preload" href="/wiki/assets/js/app.89146862.js" as="script"><link rel="preload" href="/wiki/assets/js/0.58a00409.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.285dacd9.js"><link rel="prefetch" href="/wiki/assets/js/2.a68ae617.js">
+    <link rel="preload" href="/wiki/assets/css/3.styles.e0d9c61a.css" as="style"><link rel="preload" href="/wiki/assets/js/app.4a9260a5.js" as="script"><link rel="preload" href="/wiki/assets/js/0.30b30e84.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.285dacd9.js"><link rel="prefetch" href="/wiki/assets/js/2.daabb609.js">
     <link rel="stylesheet" href="/wiki/assets/css/3.styles.e0d9c61a.css">
   </head>
   <body>
@@ -23,14 +23,14 @@
 </code></pre><h3 id="rem"><a href="#rem" aria-hidden="true" class="header-anchor">#</a> REM</h3><p>是否使用 REM 适配。启动该选项后，_img.scss 会以 REM 为单位，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">REM</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre><h3 id="es-next"><a href="#es-next" aria-hidden="true" class="header-anchor">#</a> ES.Next</h3><p>是否对 JS 进行 ES.Next 语法的编译，默认值为 true, e.g.</p><pre class="language-yaml"><code><span class="token key atrule">ES.Next</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre><h3 id="alias"><a href="#alias" aria-hidden="true" class="header-anchor">#</a> alias</h3><p>Webpack 别名配置，<a href="https://webpack.js.org/loaders/css-loader/#alias" target="_blank" rel="noopener noreferrer">参考文档</a>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">alias</span><span class="token punctuation">:</span>
-    <span class="token key atrule">axios</span><span class="token punctuation">:</span> ./node_modules/axios
-    <span class="token key atrule">jquery</span><span class="token punctuation">:</span> ./src/assets/jquery.min.js
+  <span class="token key atrule">axios</span><span class="token punctuation">:</span> ./node_modules/axios
+  <span class="token key atrule">jquery</span><span class="token punctuation">:</span> ./src/assets/jquery.min.js
 </code></pre><h3 id="global"><a href="#global" aria-hidden="true" class="header-anchor">#</a> global</h3><p>Webpack 全局对象，<a href="https://webpack.js.org/guides/shimming/#shimming-globals" target="_blank" rel="noopener noreferrer">参考文档</a>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">global</span><span class="token punctuation">:</span>
-    <span class="token key atrule">$</span><span class="token punctuation">:</span> jquery
-    <span class="token key atrule">jquery</span><span class="token punctuation">:</span> jquery
-    <span class="token key atrule">jQuery</span><span class="token punctuation">:</span> jquery
+  <span class="token key atrule">$</span><span class="token punctuation">:</span> jquery
+  <span class="token key atrule">jquery</span><span class="token punctuation">:</span> jquery
+  <span class="token key atrule">jQuery</span><span class="token punctuation">:</span> jquery
 </code></pre><h3 id="externals"><a href="#externals" aria-hidden="true" class="header-anchor">#</a> externals</h3><p>Webpack externals，<a href="https://webpack.js.org/configuration/externals/#externals" target="_blank" rel="noopener noreferrer">参考文档</a>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">externals</span><span class="token punctuation">:</span>
-    <span class="token key atrule">vue</span><span class="token punctuation">:</span> Vue
+  <span class="token key atrule">vue</span><span class="token punctuation">:</span> Vue
 </code></pre><h3 id="includemodules"><a href="#includemodules" aria-hidden="true" class="header-anchor">#</a> includeModules</h3><p>Webpack modules，默认已加入项目路径下的 <code>node_modules</code>，<a href="https://webpack.js.org/concepts/module-resolution/#src/components/Sidebar/Sidebar.jsx" target="_blank" rel="noopener noreferrer">参考文档</a>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">includeModules</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> ./test_node_modules
 </code></pre><h3 id="eslint"><a href="#eslint" aria-hidden="true" class="header-anchor">#</a> ESLint</h3><p>是否启动 ESLint，启动后若项目下没有 <a href="http://eslint.cn/docs/user-guide/configuring#configuration-file-formats" target="_blank" rel="noopener noreferrer">ESLint 配置文件</a> 的话，JS 部分默认会以 <a href="https://standardjs.com/rules-zhcn.html" target="_blank" rel="noopener noreferrer">Standard</a> 作为规范，vue 文件部分会以  <a href="https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention" target="_blank" rel="noopener noreferrer">plugin:vue/essential</a>。e.g.</p><pre class="language-yaml"><code><span class="token key atrule">ESLint</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -181,9 +181,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre><h3 id="onlyrunshell-2"><a href="#onlyrunshell-2" aria-hidden="true" class="header-anchor">#</a> onlyRunShell</h3><p>否仅仅执行 Shell 脚本文件，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">onlyRunShell</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre><h3 id="output-webpackstats"><a href="#output-webpackstats" aria-hidden="true" class="header-anchor">#</a> output.webpackStats</h3><p>是否构建出 webpack stats.json，有助于分析模块打包占比，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">output.webpackStats</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 </code></pre><p>分析网站：<a href="http://webpack.github.io/analyse/" target="_blank" rel="noopener noreferrer">webpack analyse</a>、<a href="http://alexkuz.github.io/webpack-chart/" target="_blank" rel="noopener noreferrer">webpack chart</a></p><h3 id="nouglifyjs"><a href="#nouglifyjs" aria-hidden="true" class="header-anchor">#</a> noUglifyJs</h3><p>构建出来的 JS 文件，是否不需要混淆，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">noUglifyJs</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-</code></pre><h2 id="schema"><a href="#schema" aria-hidden="true" class="header-anchor">#</a> Schema</h2><pre class="language-js"><code><span class="token string">'use strict'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> schema <span class="token operator">=</span> <span class="token punctuation">{</span>
+</code></pre><h2 id="schema"><a href="#schema" aria-hidden="true" class="header-anchor">#</a> Schema</h2><pre class="language-js"><code><span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
   version<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
   type<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
@@ -237,6 +235,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre></div><!----><!----></div></div></div>
-    <script src="/wiki/assets/js/0.58a00409.js" defer></script><script src="/wiki/assets/js/app.89146862.js" defer></script>
+    <script src="/wiki/assets/js/0.30b30e84.js" defer></script><script src="/wiki/assets/js/app.4a9260a5.js" defer></script>
   </body>
 </html>

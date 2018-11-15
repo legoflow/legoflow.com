@@ -68,13 +68,13 @@ macOS 系统的客户端，下载完成后打开 dmg 文件。
 默认打开界面为 项目列表界面，项目列表为空时。
 
 <div align="center">
-    <img src="~image/1.png" width="300px">
+  <img src="~image/1.png" width="300px">
 </div>
 
 项目列表存在项目，若同时存在多个项目，可通过拖拉改变项目列表的顺序。
 
 <div align="center">
-    <img src="~image/4.png" width="300px">
+  <img src="~image/4.png" width="300px">
 </div>
 
 `双击具体项目` 可让 **资源管理器** 打开项目路径。
@@ -92,7 +92,7 @@ macOS 系统更加可以通过 `CMD + 点击具体项目` 让 **常用编辑器*
 点击菜单上的 `新建` 或 按下键盘的 `左箭头` 键，即可切换到新建项目界面。
 
 <div align="center">
-    <img src="~image/2.png" width="300px">
+  <img src="~image/2.png" width="300px">
 </div>
 
 新建项目时，需要填入 `项目名称`，该名称会作为新建文件夹的名称。
@@ -114,7 +114,7 @@ macOS 系统更加可以通过 `CMD + 点击具体项目` 让 **常用编辑器*
 该界面主要用于记录展示项目开发以及构建工作流的相关日志信息，包括 log、error、success 等。
 
 <div align="center">
-    <img src="~image/5.png" width="300px">
+  <img src="~image/5.png" width="300px">
 </div>
 
 ### 全局设置界面
@@ -124,7 +124,7 @@ macOS 系统点击菜单 `LegoFlow 2>首选项` 或 快捷键 `CMD+,` 进入全�
 Windows 64 系统点击菜单 `应用>全局设置` 进入全局设置界面。
 
 <div align="center">
-    <img src="~image/6.png" width="300px">
+  <img src="~image/6.png" width="300px">
 </div>
 
 在该界面，可以对客户端应用全局参数进行配置。可设置的参数有：
@@ -205,18 +205,18 @@ JavaScript 模块由 Webpack 管理，工作流会自动获取 `项目目录/src
 
 ```js
 // 开发环境 判断
-if ( process.env === 'dev' ) {
-    console.info('这个是开发环境');
+if (process.env === 'dev') {
+  console.info('这个是开发环境')
 }
 // 生产环境 判断
-else if ( process.env === 'build' ) {
-    console.info( '这个是生产环境' );
+else if (process.env === 'build') {
+  console.info('这个是生产环境')
 }
 
 // 如果你使用了 env 具体指向某个环境
 // 例如 workflow.dev { env: 'dev-test' }
 // 可通过 process.environment 访问到具体注入的环境变量
-console.log( process.environment );
+console.log(process.environment)
 ```
 
 ### 引入 tpl 文件
@@ -230,11 +230,9 @@ console.log( process.environment );
 
 ```js
 // t.js
-let thtml = require('./t.tpl')( {
-    name: 'test',
-} )
+const thtml = require('./t.tpl')({ name: 'test' })
 
-console.log( thtml ); // <div id="test">test</div>
+console.log(thtml) // <div id="test">test</div>
 ```
 
 使用 helper
@@ -246,18 +244,17 @@ console.log( thtml ); // <div id="test">test</div>
 
 ```js
 // t.js
-let helper = require('@tpl/helper');
+const helper = require('@tpl/helper')
 
-helper.test = ( val ) => {
-    return `test helper: ${ val }`;
+helper.test = val => {
+  return `test helper: ${val}`
 }
 
-let thtml = require('./t.tpl')( {
-    name: 'test',
-} )
+const thtml = require('./t.tpl')({ name: 'test' })
 
-console.log(thtml); // <div id="test">test helper: t</div>
+console.log(thtml) // <div id="test">test helper: t</div>
 ```
+
 ## 图片模块
 
 ### _img.scss
@@ -274,19 +271,19 @@ console.log(thtml); // <div id="test">test helper: t</div>
 /src/sass/_img.scss
 
 %avatar.png {
-    width: 80px;
-    height: 80px;
-    background-image: url('../img/avatar.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  background-image: url('../img/avatar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 %slice-loading.png {
-    width: 80px;
-    height: 32px;
-    background-image: url('../img/slice/loading.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 80px;
+  height: 32px;
+  background-image: url('../img/slice/loading.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 ```
 
@@ -294,11 +291,11 @@ console.log(thtml); // <div id="test">test helper: t</div>
 
 ```css
 #test-1 {
-    @extend %avatar.png
+  @extend %avatar.png
 }
 
 #test-2 {
-    @extend %slice-loading.png
+  @extend %slice-loading.png
 }
 ```
 
@@ -316,19 +313,19 @@ console.log(thtml); // <div id="test">test helper: t</div>
 /src/sass/_img.scss
 
 %avatar.png {
-    width: 0.8rem;
-    height: 0.8rem;
-    background-image: url('../img/avatar.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-image: url('../img/avatar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 %slice-loading.png {
-    width: 0.8rem;
-    height: 0.32rem;
-    background-image: url('../img/slice/loading.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 0.8rem;
+  height: 0.32rem;
+  background-image: url('../img/slice/loading.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 ```
 
@@ -340,24 +337,25 @@ console.log(thtml); // <div id="test">test helper: t</div>
 图片
 /src/img/base64/avatar.png
 ```
+
 ↓ 编译成
 
 ```sass
 /src/sass/_img.scss
 
 %avatar {
-    width: 80px;
-    height: 80px;
-    background-image: url('../img/base64/avatar.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  background-image: url('../img/base64/avatar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 %base64-avatar.png {
-    width: 80px;
-    height: 80px;
-    background-image: url('../img/base64/avatar.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+  background-image: url('../img/base64/avatar.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 ```
 
@@ -584,30 +582,26 @@ lf set loadNPMLegoFlowTemplate true
 
 ```js
 // zip.js
-'use strict';
+const path = require('path')
+const del = require('del')
+const shell = require('shelljs')
 
-const path = require('path');
-const del = require('del');
-const shell = require('shelljs');
+module.exports = ({ config: { projectPath }, messager, nodeBinExec }) => {
+  messager.log('删除原有 zip')
 
-module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
-    messager.log( '删除原有 zip' );
+  del.sync([`${ projectPath }/dist.zip` ], {force: true})
 
-    del.sync( [ `${ projectPath }/dist.zip` ], { force: true } );
+  messager.log('打包中')
 
-    messager.log( '打包中' );
+  shell.cd(projectPath)
 
-    shell.cd( projectPath );
-
-    if ( shell.exec( 'zip -r dist.zip dist' ).code === 0 ) {
-        messager.log( '打包完成' );
-
-        messager.success( );
-    }
-    else {
-        messager.stop( '打包错误' );
-    }
-};
+  if (shell.exec('zip -r dist.zip dist').code === 0) {
+    messager.log( '打包完成' )
+    messager.success( )
+  } else {
+    messager.stop( '打包错误' )
+  }
+}
 ```
 
 配置文件中注册脚本
@@ -615,7 +609,7 @@ module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
 ```yaml
 # legoflow.yml
 workflow.build:
-    shell: ./zip.js
+  shell: ./zip.js
 ```
 
 值得注意的是，客户端会等待 Shell 回调结果信息( 成功或者失败 )，从而释放 线程资源。
@@ -640,12 +634,12 @@ workflow.build:
 
 const path = require('path');
 
-module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
-    const root = path.resolve( projectPath, '../' );
+module.exports = ({ config: { projectPath }, messager, nodeBinExec }) => {
+  const root = path.resolve( projectPath, '../' )
 
-    nodeBinExec( root, './script/build.js', ( code, msg, err ) => {
-        code === 0 ? messager.success( ) : messager.stop( err );
-    } )
+  nodeBinExec(root, './script/build.js', (code, msg, err) => {
+    code === 0 ? messager.success() : messager.stop(err)
+  })
 }
 ```
 
@@ -673,29 +667,27 @@ module.exports = ( { config: { projectPath }, messager, nodeBinExec } ) => {
 // ./shell/build.js
 'use strict';
 
-const path = require('path');
-const prompt = require( 'inquirer' ).prompt;
+const path = require('path')
+const prompt = require( 'inquirer' ).prompt
 
-exports.init = ( { config, message, pull } ) => {
-  return new Promise( async ( resolve, reject ) => {
-    if ( config.from === 'cli' ) {
-      const questions = [
-        {
+exports.init = ({ config, message, pull }) => {
+  return new Promise(async (resolve, reject ) => {
+    if (config.from === 'cli') {
+      const questions = [{
           type: 'list',
           name: 'whichEnv',
           message: '请选择构建环境',
           choices: Object.keys( config.env ),
-          default: 1,
-        },
-      ];
+          default: 1
+        }]
 
-      const { whichEnv } = await prompt( questions );
+      const { whichEnv } = await prompt(questions)
 
-      config[ 'workflow.build' ].env = whichEnv;
+      config[ 'workflow.build' ].env = whichEnv
     }
 
-    resolve( );
-  } );
+    resolve()
+  })
 }
 ```
 

@@ -56,8 +56,8 @@ Webpack 别名配置，[参考文档](https://webpack.js.org/loaders/css-loader/
 
 ```yaml
 alias:
-    axios: ./node_modules/axios
-    jquery: ./src/assets/jquery.min.js
+  axios: ./node_modules/axios
+  jquery: ./src/assets/jquery.min.js
 ```
 
 ### global
@@ -66,9 +66,9 @@ Webpack 全局对象，[参考文档](https://webpack.js.org/guides/shimming/#sh
 
 ```yaml
 global:
-    $: jquery
-    jquery: jquery
-    jQuery: jquery
+  $: jquery
+  jquery: jquery
+  jQuery: jquery
 ```
 
 ### externals
@@ -77,7 +77,7 @@ Webpack externals，[参考文档](https://webpack.js.org/configuration/external
 
 ```yaml
 externals:
-    vue: Vue
+  vue: Vue
 ```
 
 ### includeModules
@@ -376,6 +376,7 @@ user.args:
 ```yaml
 env: dev-test
 ```
+
 ### proxy
 
 Webpack 代理，[参考文档](https://webpack.js.org/configuration/dev-server/#devserver-proxy)，e.g.
@@ -512,9 +513,7 @@ noUglifyJs: true
 ## Schema
 
 ```js
-'use strict';
-
-const schema = {
+{
   name: String,
   version: String,
   type: String,
