@@ -158,52 +158,177 @@ entry:
 mode: webpack
 ```
 
-### webpack
+## webpack
 
-当设置 Engine 模式 为 `webpack` 的时候，该属性生效，主要用来设置一些 Webpack 插件的配置。e.g.
+当设置 Engine 模式 为 `webpack` 的时候，以下属性生效，主要用来设置一些 Webpack 插件的配置。
+
+**以下参数请配置在 `webpack` 内使用**，e.g.
 
 ```yaml
 webpack:
-  # 构建工作流，处理图片资源时，会进行图片压缩处理质量，默认为 90
   imageQuality: 70
-  # 构建工作流，同时生成 Source Map 文件，默认为 false
-  build.sourceMap: true
-  # 禁止 异步 vue 文件内的 Style 单独打包出样式文件，默认为 true
-  VueChunkStyle: false
-  # 默认 Webpack loader 对文件的处理都 exclude 排除 node_modules 路径下的模块
-  # 而通过该属性可以指定一些模块加入 loader 的处理，例如：ESNext 语法编译等等
-  include:
-    esnext:
-      - ./node_modules/sdk
-    vue:
-      - ./node_modules/alert
-  # dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件
-  dll:
-    vendor1:
-      - vue
-      - vue-router
-      - vuex
-  # 设置 html-webpack-plugin 插件配置
-  html:
-    - template: ./src/html/index.html
-      filename: index.html
-      excludeChunks:
-        - test
-    - template: ./src/html/test.html
-      filename: test.html
-      excludeChunks:
-        - main
-  # 设置 babel env 转换模块规范，详细 https://babeljs.io/docs/en/babel-preset-env#modules
-  # 默认值为 commonjs
-  babelModules: false
-  # 设置 uglifyoptions 配置项，详细 https://github.com/webpack-contrib/uglifyjs-webpack-plugin#uglifyoptions
-  uglifyOptions:
+```
+
+### imageQuality
+
+构建工作流，处理图片资源时，会进行图片压缩处理质量，默认为 90，e.g.
+
+```yml
+imageQuality: 70
+```
+
+### build.sourceMap
+
+构建工作流，同时生成 Source Map 文件，默认为 false，e.g.
+
+```yml
+build.sourceMap: true
+```
+
+### VueChunkStyle
+
+禁止 异步 vue 文件内的 Style 单独打包出样式文件，默认为 true，e.g.
+
+```yml
+VueChunkStyle: false
+```
+
+### include
+
+默认 Webpack loader 对文件的处理都 exclude 排除 node_modules 路径下的模块，而通过该属性可以指定一些模块加入 loader 的处理，例如：ESNext 语法编译等等，e.g.
+
+```yml
+include:
+  esnext:
+    - ./node_modules/sdk
+  vue:
+    - ./node_modules/alert
+```
+
+### dll
+
+dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件，e.g.
+
+```yml
+dll:
+  vendor1:
+    - vue
+    - vue-router
+    - vuex
+```
+
+### html
+
+设置 html-webpack-plugin 插件配置，e.g.
+
+```yml
+html:
+  - template: ./src/html/index.html
+    filename: index.html
+    excludeChunks:
+      - test
+  - template: ./src/html/test.html
+    filename: test.html
+    excludeChunks:
+      - main
+```
+
+### babelModules
+
+设置 babel env 转换模块规范 ([详细](https://babeljs.io/docs/en/babel-preset-env#modules))， 默认值为 `commonjs`， e.g.
+
+```yml
+babelModules: false
+```
+
+### uglifyOptions
+
+设置 uglifyoptions 配置项 ([详细](https://github.com/webpack-contrib/uglifyjs-webpack-plugin#uglifyoptions))，e.g.
+
+```yml
+uglifyOptions:
     keep_fnames: true
 ```
 
+### dev.https (v2.4.0+)
+
+是否启动 https 模式，e.g.
+
+```yaml
+https: true
+```
+
+### build.htmlInject (v2.4.0+)
+
+通过该配置注入 JS / Css 静态资源，e.g.
+
+```yml
+build.htmlInject:
+  a: 'https://a.com/a.css'
+  b: 'https://b.com/b.js',
+```
+
+```css
+/* https://a.com/a.css */
+html { background: red }
+```
+
+```js
+// https://b.com/b.js
+console.log('b')
+```
+
+#### 构建前
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <!-- @inject/link: a -->
+  <!-- @inject/link: b -->
+
+  <!-- @inject/inline: a -->
+  <!-- @inject/inline: b -->
+</body>
+</html>
+```
+
+#### 构建后
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <link rel="stylesheet" href="https://a.com/a.css">
+  <script src="https://b.com/b.js"></script>
+
+  <style type="text/css">html { background: red }</style>
+  <script>console.log('b')</script>
+</body>
+</html>
+```
+
+### build.copy (v2.4.0+)
+
+通过该配置在构建后复制文件或文件夹，e.g.
+
+```yml
+build.copy:
+  a.png: b.png
+  assets: assets
+```
+
+构建后，`./src/a.png` 复制到 `./dist/b.png`，`./src/assets` 复制到 `./dist/assets`
+
 ## 开发工作流参数
 
-以下参数配置在 workflow.dev 内，e.g.
+**以下参数配置在 `workflow.dev` 内**，e.g.
 
 ```yaml
 workflow.dev:
@@ -236,12 +361,12 @@ watch.reload:
 # 用户为 test1，在 JS 文件中变量 process.args.token4User 编译为 123
 # 用户为 test2，在 JS 文件中变量 process.args.token4User 编译为 321
 user.args:
-    *:
-        token4Common: abc
-    test1:
-        token4User: 123
-    test2:
-        token4User: 321
+  *:
+    token4Common: abc
+  test1:
+    token4User: 123
+  test2:
+    token4User: 321
 ```
 
 ### env
@@ -278,17 +403,9 @@ shell: ./shell/dev.js
 onlyRunShell: true
 ```
 
-### https (v2.4.0+)
-
-webpack mode 项目，是否启动 https 模式，e.g.
-
-```yaml
-https: true
-```
-
 ## 构建工作流参数
 
-以下参数配置在 workflow.build 内，e.g.
+**以下参数配置在 `workflow.build` 内**，e.g.
 
 ```yaml
 workflow.build:
@@ -392,74 +509,6 @@ output.webpackStats: true
 noUglifyJs: true
 ```
 
-### html.inject (v2.4.0+)
-
-webpack mode 项目，可通过该配置注入 JS / Css 静态资源，e.g.
-
-```yml
-html.inject:
-  a: 'https://a.com/a.css'
-  b: 'https://b.com/b.js',
-```
-
-```css
-/* https://a.com/a.css */
-html { background: red }
-```
-
-```js
-// https://b.com/b.js
-console.log('b')
-```
-
-#### 构建前
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Page Title</title>
-</head>
-<body>
-  <!-- @inject/link: a -->
-  <!-- @inject/link: b -->
-
-  <!-- @inject/inline: a -->
-  <!-- @inject/inline: b -->
-</body>
-</html>
-```
-
-#### 构建后
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Page Title</title>
-</head>
-<body>
-  <link rel="stylesheet" href="https://a.com/a.css">
-  <script src="https://b.com/b.js"></script>
-
-  <style type="text/css">html { background: red }</style>
-  <script>console.log('b')</script>
-</body>
-</html>
-```
-
-### copy (v2.4.0+)
-
-webpack mode 项目，可通过该配置在构建后复制文件或文件夹，e.g.
-
-```yml
-copy:
-  a.png: b.png
-  assets: assets
-```
-
-构建后，`./src/a.png` 复制到 `./dist/b.png`，`./src/assets` 复制到 `./dist/assets`
-
 ## Schema
 
 ```js
@@ -488,7 +537,13 @@ const schema = {
       vue: Array
     },
     babelModules: String,
-    uglifyOptions: Object
+    uglifyOptions: Object,
+    VueChunkStyle: Boolean,
+    'sass.globalResources': Array,
+    'dev.https': Boolean,
+    'build.sourceMap': Boolean,
+    'build.html.inject': Object,
+    'build.copy': Object
   },
   'workflow.dev': {
     env: String,
@@ -497,8 +552,7 @@ const schema = {
     'user.args': Object,
     proxy: Object,
     shell: String,
-    onlyRunShell: Boolean,
-    https: Boolean
+    onlyRunShell: Boolean
   },
   'workflow.build': {
     publicPath: String,
@@ -510,11 +564,7 @@ const schema = {
     env: String,
     shell: String,
     onlyRunShell: Boolean,
-    'output.webpackStats': Boolean,
-    'html.inject': Object,
-    copy: Object
+    'output.webpackStats': Boolean
   }
 }
 ```
-
-[参考](https://github.com/legoflow/engine/blob/master/params_config_schema.js)
