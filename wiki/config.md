@@ -6,7 +6,7 @@ sidebar: auto
 
 ## 说明
 
-从 v2.0 版本起来，主要是通过项目路径下的 `legoflow.json` / `legolfow.yml` / `legoflow.js` 作为配置文件，默认使用 `legoflow.yml`。
+从 v2.0 版本起来，主要是通过项目路径下的 `legoflow.json` / `legolfow.yaml` / `legoflow.js` 作为配置文件，默认使用 `legoflow.yaml`。
 
 ## 公共参数
 
@@ -173,7 +173,7 @@ webpack:
 
 构建工作流，处理图片资源时，会进行图片压缩处理质量，默认为 90，e.g.
 
-```yml
+```yaml
 imageQuality: 70
 ```
 
@@ -181,7 +181,7 @@ imageQuality: 70
 
 构建工作流，同时生成 Source Map 文件，默认为 false，e.g.
 
-```yml
+```yaml
 build.sourceMap: true
 ```
 
@@ -189,7 +189,7 @@ build.sourceMap: true
 
 禁止 异步 vue 文件内的 Style 单独打包出样式文件，默认为 true，e.g.
 
-```yml
+```yaml
 VueChunkStyle: false
 ```
 
@@ -197,7 +197,7 @@ VueChunkStyle: false
 
 默认 Webpack loader 对文件的处理都 exclude 排除 node_modules 路径下的模块，而通过该属性可以指定一些模块加入 loader 的处理，例如：ESNext 语法编译等等，e.g.
 
-```yml
+```yaml
 include:
   esnext:
     - ./node_modules/sdk
@@ -209,7 +209,7 @@ include:
 
 dll 设置, 可通过命令行工具 cli，执行 `lf build:dll` 生成 dll 文件，e.g.
 
-```yml
+```yaml
 dll:
   vendor1:
     - vue
@@ -221,7 +221,7 @@ dll:
 
 设置 html-webpack-plugin 插件配置，e.g.
 
-```yml
+```yaml
 html:
   - template: ./src/html/index.html
     filename: index.html
@@ -237,7 +237,7 @@ html:
 
 设置 babel env 转换模块规范 ([详细](https://babeljs.io/docs/en/babel-preset-env#modules))， 默认值为 `commonjs`， e.g.
 
-```yml
+```yaml
 babelModules: false
 ```
 
@@ -245,7 +245,7 @@ babelModules: false
 
 设置 uglifyoptions 配置项 ([详细](https://github.com/webpack-contrib/uglifyjs-webpack-plugin#uglifyoptions))，e.g.
 
-```yml
+```yaml
 uglifyOptions:
     keep_fnames: true
 ```
@@ -260,9 +260,9 @@ https: true
 
 ### build.htmlInject (v2.4.0+)
 
-通过该配置注入 JS / Css 静态资源，e.g.
+通过该配置注入 JS / CSS 静态资源，e.g.
 
-```yml
+```yaml
 build.htmlInject:
   a: 'https://a.com/a.css'
   b: 'https://b.com/b.js',
