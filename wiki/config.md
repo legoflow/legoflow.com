@@ -120,18 +120,18 @@ module.exports = {
 
 ```yaml
 env:
-    dev-test:
-        alias:
-            axios: ./src/assets/axios.min.js
-    preview:
-        workflow.build:
-            html.resourcesDomain: https://preview.com
-    test:
-        workflow.build:
-            html.resourcesDomain: https://test.com
-    production:
-        workflow.build:
-            html.resourcesDomain: https://production.com
+  dev-test:
+    alias:
+      axios: ./src/assets/axios.min.js
+  preview:
+    workflow.build:
+      html.resourcesDomain: https://preview.com
+  test:
+    workflow.build:
+      html.resourcesDomain: https://test.com
+  production:
+    workflow.build:
+      html.resourcesDomain: https://production.com
 ```
 
 ### entry
@@ -276,6 +276,14 @@ shell: ./shell/dev.js
 
 ```yaml
 onlyRunShell: true
+```
+
+### https (v2.4.0+)
+
+webpack mode 项目，是否启动 https 模式，e.g.
+
+```yaml
+https: true
 ```
 
 ## 构建工作流参数
