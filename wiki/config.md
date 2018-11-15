@@ -318,7 +318,7 @@ console.log('b')
 
 通过该配置在构建后复制文件或文件夹，e.g.
 
-```yml
+```yaml
 build.copy:
   a.png: b.png
   assets: assets

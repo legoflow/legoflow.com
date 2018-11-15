@@ -7,7 +7,7 @@
     <meta name="description" content="legoflow 2">
     <link rel="icon" href="/wiki/logo.png">
     
-    <link rel="preload" href="/wiki/assets/css/3.styles.e0d9c61a.css" as="style"><link rel="preload" href="/wiki/assets/js/app.e8fdfa42.js" as="script"><link rel="preload" href="/wiki/assets/js/0.853ad693.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.285dacd9.js"><link rel="prefetch" href="/wiki/assets/js/2.a68ae617.js">
+    <link rel="preload" href="/wiki/assets/css/3.styles.e0d9c61a.css" as="style"><link rel="preload" href="/wiki/assets/js/app.fc3d9d1f.js" as="script"><link rel="preload" href="/wiki/assets/js/0.2ab09746.js" as="script"><link rel="prefetch" href="/wiki/assets/js/1.285dacd9.js"><link rel="prefetch" href="/wiki/assets/js/2.a68ae617.js">
     <link rel="stylesheet" href="/wiki/assets/css/3.styles.e0d9c61a.css">
   </head>
   <body>
@@ -130,9 +130,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre><h3 id="build-copy-v2-4-0"><a href="#build-copy-v2-4-0" aria-hidden="true" class="header-anchor">#</a> build.copy (v2.4.0+)</h3><p>通过该配置在构建后复制文件或文件夹，e.g.</p><pre class="language-text"><code>build.copy:
-  a.png: b.png
-  assets: assets
+</code></pre><h3 id="build-copy-v2-4-0"><a href="#build-copy-v2-4-0" aria-hidden="true" class="header-anchor">#</a> build.copy (v2.4.0+)</h3><p>通过该配置在构建后复制文件或文件夹，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">build.copy</span><span class="token punctuation">:</span>
+  <span class="token key atrule">a.png</span><span class="token punctuation">:</span> b.png
+  <span class="token key atrule">assets</span><span class="token punctuation">:</span> assets
 </code></pre><p>构建后，<code>./src/a.png</code> 复制到 <code>./dist/b.png</code>，<code>./src/assets</code> 复制到 <code>./dist/assets</code></p><h2 id="开发工作流参数"><a href="#开发工作流参数" aria-hidden="true" class="header-anchor">#</a> 开发工作流参数</h2><p><strong>以下参数配置在 <code>workflow.dev</code> 内</strong>，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">workflow.dev</span><span class="token punctuation">:</span>
     <span class="token key atrule">env</span><span class="token punctuation">:</span> dev<span class="token punctuation">-</span>test
 </code></pre><h3 id="hot-reload"><a href="#hot-reload" aria-hidden="true" class="header-anchor">#</a> hot.reload</h3><p>代码热更新，e.g.</p><pre class="language-yaml"><code><span class="token key atrule">hot.reload</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -237,6 +237,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre></div><!----><!----></div></div></div>
-    <script src="/wiki/assets/js/0.853ad693.js" defer></script><script src="/wiki/assets/js/app.e8fdfa42.js" defer></script>
+    <script src="/wiki/assets/js/0.2ab09746.js" defer></script><script src="/wiki/assets/js/app.fc3d9d1f.js" defer></script>
   </body>
 </html>
