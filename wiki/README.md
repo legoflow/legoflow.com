@@ -521,7 +521,6 @@ Windows: `APP/resources/app/node_modules`
 
 开发工作流启动的 web 服务，URL 带上 stats 参数，则自动注入 stats.js 工具，[了解功能](https://github.com/mrdoob/stats.js)。
 
-
 ## 自定义项目类型
 
 除了可以新建项目类型脚手架之外，还支持新建自定义项目类型。

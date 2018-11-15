@@ -20,24 +20,26 @@ LegoFlow 除了提供 [客户端](https://github.com/legoflow/legoflow) 版本�
 
 ```shell
 npm i legoflow-cli -g
+
+# or
+# 推荐使用 yarn 安装
+yarn global add legoflow-cli
 ```
 
-## 命令
+## 使用
 
-### 帮助
+### 查看命令
 
-```
+```shell
 legoflow -h
 
+# 使用简写
 lf -h
 ```
 
 ### 新建项目
 
 ```shell
-legoflow init
-
-# 使用简写
 lf init
 ```
 
@@ -64,11 +66,23 @@ cd test
 
 lf build
 
-# 可选择环境
+# 选择环境
 lf build --env
 
 # 可指定环境
 lf build preview
+```
+
+### CI 构建
+
+```sh
+# 进入 legoflow 项目
+cd test
+
+lf-ci
+
+# 也可构建指定环境 lf-ci [env] 例如：构建测试环境
+lf-ci test
 ```
 
 ### 构建 dll
@@ -124,6 +138,8 @@ lf:eslint -v
 lf:eslint -h
 lf:eslint ...
 ```
+
+**注意** 2.3 版本后该命令更改为 `lf-eslint`
 
 ## CI 持续构建
 
