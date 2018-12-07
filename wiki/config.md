@@ -326,6 +326,18 @@ build.copy:
 
 构建后，`./src/a.png` 复制到 `./dist/b.png`，`./src/assets` 复制到 `./dist/assets`
 
+### bundle.worker (v2.5.0+)
+
+通过该配置可开启打包 WebWorker 文件进依赖链，e.g.
+
+```yaml
+bundle.worker: true
+```
+
+```js
+new Worker('./worker.js', { type: 'module' })
+```
+
 ## 开发工作流参数
 
 **以下参数配置在 `workflow.dev` 内**，e.g.
