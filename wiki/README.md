@@ -739,7 +739,7 @@ workflow.build:
 
 ## Worker 脚本文件 （v2.7.0+）
 
-使用 [worker-loader](https://github.com/webpack-contrib/worker-loader) 对 Worler 脚本文件进行打包
+使用 [worker-loader](https://github.com/webpack-contrib/worker-loader) 对 Worker 脚本文件进行打包
 
 ```js
 import Worker from './test.worker.js'
