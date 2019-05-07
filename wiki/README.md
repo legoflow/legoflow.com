@@ -737,6 +737,17 @@ workflow.build:
 
 默认脚手架 **Vue.js** & **Vue.ts** 就是最好的示范例子。
 
+## Worker 脚本文件 （v2.7.0+）
+
+使用 [worker-loader](https://github.com/webpack-contrib/worker-loader) 对 Worler 脚本文件进行打包
+
+```js
+import Worker from './test.worker.js'
+
+const worker = new Worker()
+worker.postMessage({})
+```
+
 ## 持续构建
 
 通过 [LegoFlow-CLI](https://github.com/legoflow/legoflow-cli) 可以对项目在 Gitlab 上进行 CI 持续构建。
