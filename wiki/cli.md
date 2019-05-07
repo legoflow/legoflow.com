@@ -18,7 +18,7 @@ LegoFlow 除了提供 [客户端](https://github.com/legoflow/legoflow) 版本�
 
 ## 安装
 
-```shell
+```bash
 npm i legoflow-cli -g
 
 # or
@@ -30,7 +30,7 @@ yarn global add legoflow-cli
 
 ### 查看命令
 
-```shell
+```bash
 legoflow -h
 
 # 使用简写
@@ -39,13 +39,13 @@ lf -h
 
 ### 新建项目
 
-```shell
+```bash
 lf init
 ```
 
 ### 开发
 
-```shell
+```bash
 # 进入 legoflow 项目
 cd test
 
@@ -60,7 +60,7 @@ lf dev test
 
 ### 构建
 
-```shell
+```bash
 # 进入 legoflow 项目
 cd test
 
@@ -75,7 +75,7 @@ lf build preview
 
 ### CI 构建
 
-```sh
+```bash
 # 进入 legoflow 项目
 cd test
 
@@ -87,13 +87,13 @@ lf-ci test
 
 ### 构建 dll
 
-```shell
+```bash
 lf build:dll
 ```
 
 ### 全局设置
 
-```shell
+```bash
 # 设置参数
 lf set <name> <value>
 
@@ -108,7 +108,7 @@ lf clean
 
 ### v1.x 项目迁移到 v2.x
 
-```shell
+```bash
 cd test
 
 lf migrate:v2
@@ -123,7 +123,7 @@ lf migrate:v2
 
 ### 关闭指定端口线程
 
-```shell
+```bash
 lf kill:port 6701
 ```
 
@@ -131,7 +131,7 @@ lf kill:port 6701
 
 通过该命令可调用内置的 [ESLint 模块](http://eslint.cn/docs/user-guide/command-line-interface)
 
-```shell
+```bash
 lf:eslint
 
 lf:eslint -v

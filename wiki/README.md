@@ -537,7 +537,7 @@ Windows: `APP/resources/app/node_modules`
 
 ### 自定义 NPM 仓库模板类型 (cli@v2.4-)
 
-```shell
+```bash
 # >= legoflow-cli v2.0.0-beta.27
 lf set loadNPMLegoFlowTemplate true
 ```
@@ -570,7 +570,7 @@ lf set loadNPMLegoFlowTemplate true
 
 例如：[legoflow-template-test](https://github.com/legoflow/legoflow-template-test)，文件夹 **template** 放置脚手架模板文件
 
-```sh
+```bash
 lf init --git https://github.com/legoflow/legoflow-template-test.git
 ```
 
@@ -742,6 +742,7 @@ workflow.build:
 使用 [worker-loader](https://github.com/webpack-contrib/worker-loader) 对 Worker 脚本文件进行打包
 
 ```js
+// 需要带 .worker.js 作为后缀识别
 import Worker from './test.worker.js'
 
 const worker = new Worker()
